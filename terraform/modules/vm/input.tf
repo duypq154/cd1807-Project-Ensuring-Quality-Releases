@@ -1,4 +1,4 @@
-variable "resourcegroupname" {
+/*variable "resourcegroupname" {
 	default = "Azuredevops"
 	description = "Resource group name"
 }
@@ -31,3 +31,16 @@ variable "tags" {
   	}
 	description = "Define tag to your resource"
 }
+
+variable "networkInterfaceName" {
+	default = "myNIC"
+	description = "NIC name"
+}
+*/
+# Resource Group/VM
+variable "location" {}
+variable "application_type" {}
+variable "resource_type" {}
+variable "resource_group" {}
+variable "subnet_id" {}
+variable "public_ip_address_id" {}
