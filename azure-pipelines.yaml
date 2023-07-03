@@ -210,9 +210,9 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment: devops3
-    name: myVM
-    resourceType: VirtualMachine
-    tags: selenium
+      name: 'myVM'
+      resourceType: VirtualMachine
+      tags: selenium
     strategy:
       runOnce:
         deploy:
