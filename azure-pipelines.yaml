@@ -189,7 +189,8 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'Azuredevops_Subscription'     # ToDo
-              appName: 'myAppDuyPQ5'               # ToDo
+              serviceConnection: 'myServiceConnection'
+              appName: 'myApplication'               # ToDo
               appType: webApp
               package: $(Pipeline.Workspace)/<artifact>/<archiveFile>       # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
