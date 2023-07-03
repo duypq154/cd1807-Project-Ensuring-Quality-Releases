@@ -211,7 +211,7 @@ stages:
     displayName: Selenium Tests
     environment: devops3
       # name: myVM
-      resourceType: VM
+      resource_type: VM
       tags: selenium
     strategy:
       runOnce:
