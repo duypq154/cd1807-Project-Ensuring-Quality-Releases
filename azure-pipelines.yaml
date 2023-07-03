@@ -178,8 +178,8 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool: myAgentPool ##
-      vmImage: Ubuntu-18.04 LTS 
+    pool:
+      vmImage: 'Ubuntu-18.04'
     environment: devops3   # ToDo
     strategy:
       runOnce:
