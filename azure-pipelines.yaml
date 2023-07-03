@@ -209,8 +209,8 @@ stages:
   # ToDo: 
   - deployment: VMDeploy
     displayName: Selenium Tests
-    environment: 'devops3'
-      name: 'myVM'
+    environment: devops3
+      name: myVM
       resourceType: VirtualMachine
       tags: selenium
     strategy:
