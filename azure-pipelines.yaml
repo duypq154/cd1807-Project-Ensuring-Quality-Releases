@@ -124,8 +124,8 @@ stages:
   # Deploy FakeRestAPI Web App
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
-    pool: myAgentPool
-    #  vmImage: 'myPackerImage'
+    pool: #myAgentPool
+      vmImage: 'myPackerImage'
     environment: devops3   # ToDo
     strategy:
       runOnce:
