@@ -137,9 +137,9 @@ stages:
               azureSubscription: 'myServiceConnection'     # ToDo
               appName: 'myApplication-AppService-DuyPQ5'               # ToDo
               appType: webApp
-              package: $(Pipeline.Workspace)/<artifact>/<archiveFile>       # ToDo: Use the published zip artifact. 
+              package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
-          # Run JMeter test suite against the App Service
+          # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
             inputs:
               script: |
@@ -147,8 +147,8 @@ stages:
                 tar -xf apache-jmeter-5.2.1.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
                 ./apache-jmeter-5.2.1/bin/jmeter -n -t PerformanceTestSuite.jmx -j jmeter.log -f
-                cat jmeter.log                                                                           # ToDo: Write your commands
-              workingDirectory: $(Pipeline.Workspace)/<artifact>            # ToDo: Use the artifact name from the task above
+                cat jmeter.log                                                                           
+              workingDirectory: drop-perftests           # ToDo: Use the artifact name from the task above
               
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
