@@ -125,7 +125,7 @@ stages:
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
     pool: myAgentPool
-      vmImage: 'myPackerImage'
+    #  vmImage: 'myPackerImage'
     environment: devops3   # ToDo
     strategy:
       runOnce:
@@ -137,7 +137,7 @@ stages:
               azureSubscription: 'myServiceConnection'     # ToDo this is serviceConnection instead of subscription
               appName: 'myApplication-AppService-DuyPQ5'               # ToDo
               appType: webApp
-              package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact. 
+              package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip      # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
@@ -156,8 +156,8 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment: devops3
-  #    name: 'mySeleniumTest'
-  #    resource_type: 'VM'
+      name: 'myVM'
+      resource_type: 'VM'
   #    tags: 'selenium'
     strategy:
       runOnce:
