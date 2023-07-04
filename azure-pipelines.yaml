@@ -84,7 +84,7 @@ stages:
       displayName: 'Archive FakeRestAPI'
       inputs:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
-        includeRootFolder: false
+        includeRootFolder: true
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
@@ -156,9 +156,9 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment: devops3
-      name: 'myVM'
-      resource_type: 'VM'
-  #    tags: 'selenium'
+    #  name: 'myVM'
+    #  resource_type: 'VM'
+    #  tags: 'selenium'
     strategy:
       runOnce:
         deploy:
