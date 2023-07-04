@@ -134,7 +134,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: 'myServiceConnection'     # ToDo
+              azureSubscription: 'Azuredevops'     # ToDo myServiceConnection
               appName: 'myApplication-AppService-DuyPQ5'               # ToDo
               appType: webApp
               package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact. 
