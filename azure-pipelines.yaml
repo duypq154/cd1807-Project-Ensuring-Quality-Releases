@@ -79,7 +79,7 @@ stages:
       displayName: Install Newman
       inputs:
         script: |
-          sudo apt-get install npm
+          sudo apt-get -y install npm
           sudo npm install -g newman
         workingDirectory: $(System.DefaultWorkingDirectory)
     # Postman Data Validation Test Suite    
