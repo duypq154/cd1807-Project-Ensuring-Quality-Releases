@@ -134,10 +134,10 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: 'Azuredevops'     # ToDo myServiceConnection
+              azureSubscription: 'myServiceConnection'     # ToDo this is serviceConnection instead of subscription
               appName: 'myApplication-AppService-DuyPQ5'               # ToDo
               appType: webApp
-              package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip       # ToDo: Use the published zip artifact. 
+              package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'       # ToDo: Use the published zip artifact. 
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
