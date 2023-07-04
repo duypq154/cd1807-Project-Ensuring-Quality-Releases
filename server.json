@@ -1,0 +1,37 @@
+{
+	"variables": {
+		"client_id": "{{env `ARM_CLIENT_ID`}}",
+		"client_secret": "{{env `ARM_CLIENT_SECRET`}}",
+		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}"
+	},
+	"builders": [{
+		"type": "azure-arm",
+ 
+    "client_id": "b4b1f876-cc3d-4b55-bedc-4a8388475118",
+    "client_secret": "l0B8Q~Bs~EUiWqTIOJxfbvVHkYRdMcJsVtUiYcof",
+    "subscription_id": "0acf9637-3187-47d8-93d4-5693d18082ce",
+    "tenant_id": "a209da8b-4fe8-40f9-85d8-ea13d94fed22",
+ 
+    "os_type": "Linux",
+    "image_publisher": "Canonical",
+    "image_offer": "UbuntuServer",
+    "image_sku": "18.04-LTS",
+ 
+    "managed_image_resource_group_name": "Azuredevops",
+    "build_resource_group_name": "Azuredevops",
+    "managed_image_name": "myPackerImage",
+ 
+    "vm_size": "Standard_B1s"
+	}],
+	"provisioners": [{
+    "inline": [
+        "apt-get update",
+        "apt-get upgrade -y",
+        "apt-get -y install nginx",
+        "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
+    ],
+    "inline_shebang": "/bin/sh -x",
+    "type": "shell",
+    "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+  }]
+}
