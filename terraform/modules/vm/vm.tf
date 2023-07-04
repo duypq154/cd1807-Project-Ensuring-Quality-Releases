@@ -1,3 +1,8 @@
+data "azurerm_image" "test" {
+  name                = "myPackerImage"
+  resource_group_name = "${var.resource_group}"
+}
+
 resource "azurerm_network_interface" "test" {
   name                = "${var.application_type}-${var.resource_type}"
   location            = "${var.location}"
@@ -26,10 +31,11 @@ resource "azurerm_linux_virtual_machine" "test" {
     caching           = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
-  }
+  source_image_id = data.azurerm_image.test.id
+  //source_image_reference {
+  //  publisher = "Canonical"
+  //  offer     = "UbuntuServer"
+  //  sku       = "18.04-LTS"
+  //  version   = "latest"
+  // }
 }

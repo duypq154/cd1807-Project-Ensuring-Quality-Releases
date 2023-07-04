@@ -28,6 +28,11 @@
         "apt-get update",
         "apt-get upgrade -y",
         "apt-get -y install nginx",
+        "sudo apt-get -y upgrade",
+        "sudo apt-get install -y python3-pip",
+        "sudo apt-get install -y unzip",
+        "sudo apt-get install -y chromium-browser",
+        "pip3 install selenium",
         "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
     ],
     "inline_shebang": "/bin/sh -x",
