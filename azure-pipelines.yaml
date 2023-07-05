@@ -106,7 +106,7 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-perftests
 
-    - task: PublishBuildArtifacts@1
+    #- task: PublishBuildArtifacts@1
 
     # Destroy the resources in Azure
     # ToDo: Change the workingDirectory path, as applicable to you
@@ -138,7 +138,7 @@ stages:
               azureSubscription: myServiceConnection     # ToDo this is serviceConnection instead of subscription
               appName: myApplication-AppService-DuyPQ5
               appType: webApp
-              package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
+              package: '/home/myagent/myagent/_work/1/drop/$(Build.BuildId)-fakerestapi.zip'     #$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
