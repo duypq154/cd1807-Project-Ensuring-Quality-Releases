@@ -138,7 +138,7 @@ stages:
               azureSubscription: myServiceConnection     # ToDo this is serviceConnection instead of subscription
               appName: myApplication-AppService-DuyPQ5
               appType: webApp
-              package: $(Build.ArtifactStagingDirectory)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
+              package: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
