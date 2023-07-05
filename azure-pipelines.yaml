@@ -84,7 +84,7 @@ stages:
       displayName: 'Archive FakeRestAPI'
       inputs:
         rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
-        includeRootFolder: true
+        includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
@@ -139,7 +139,7 @@ stages:
               azureSubscription: 'myServiceConnection'     # ToDo this is serviceConnection instead of subscription
               appName: 'myApplication-AppService-DuyPQ5'               # ToDo
               appType: webApp
-              package: $(Build.ArtifactStagingDirectory)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip      # ToDo: Use the published zip artifact. 
+              package: $(Build.ArtifactStagingDirectory)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service ToDo: Write your commands
           - task: CmdLine@2
@@ -157,7 +157,7 @@ stages:
   - deployment: VMDeploy
     displayName: Selenium Tests
     environment:
-      name: 'myVM'
+      name: myVM
       resourceType: VirtualMachine
     strategy:
       runOnce:
