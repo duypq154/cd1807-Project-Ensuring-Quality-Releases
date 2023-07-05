@@ -109,14 +109,14 @@ stages:
     #- task: PublishBuildArtifacts@1
 
     # Destroy the resources in Azure
-    # ToDo: Change the workingDirectory path, as applicable to you
-    #- task: TerraformTaskV3@3
-    #  displayName: Terraform destroy
-    #  inputs:
-    #    provider: 'azurerm'
-    #    command: 'destroy'
-    #    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-    #    environmentServiceNameAzureRM: '$(azureServiceConnectionId)' 
+    #ToDo: Change the workingDirectory path, as applicable to you
+    - task: TerraformTaskV3@3
+      displayName: Terraform destroy
+      inputs:
+        provider: 'azurerm'
+        command: 'destroy'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        environmentServiceNameAzureRM: '$(azureServiceConnectionId)' 
 
   # DEPLOYMENT STAGE
 #--------------------------------------------#    
