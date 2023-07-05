@@ -156,9 +156,9 @@ stages:
   # Selenium | Functional UI Tests
   - deployment: VMDeploy
     displayName: Selenium Tests
-    environment: devops3
-      name:'myVM'
-      resourceType:VirtualMachine
+    environment:
+      name: 'myVM'
+      resourceType: VirtualMachine
     strategy:
       runOnce:
         deploy:
