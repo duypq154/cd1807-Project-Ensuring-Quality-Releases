@@ -83,7 +83,7 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
-        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
+        rootFolderOrFile: #'$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
         includeRootFolder: false
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
@@ -135,8 +135,8 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy Azure Web App'
             inputs:
-              azureSubscription: 'myServiceConnection'     # ToDo this is serviceConnection instead of subscription
-              appName: 'myApplication-AppService-DuyPQ5'
+              azureSubscription: myServiceConnection     # ToDo this is serviceConnection instead of subscription
+              appName: myApplication-AppService-DuyPQ5
               appType: webApp
               package: $(Build.ArtifactStagingDirectory)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
           #--------------------------------------------#    
