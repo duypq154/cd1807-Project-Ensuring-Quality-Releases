@@ -127,8 +127,7 @@ stages:
   # ToDo: Provide <environment name> you created in your DevOps project
   - deployment: FakeRestAPI
     pool: myAgentPool
-    #  vmImage: 'myPackerImage'
-    environment: devops3   # ToDo
+    environment: devops3
     strategy:
       runOnce:
         deploy:
@@ -137,7 +136,7 @@ stages:
             displayName: 'Deploy Azure Web App'
             inputs:
               azureSubscription: 'myServiceConnection'     # ToDo this is serviceConnection instead of subscription
-              appName: 'myApplication-AppService-DuyPQ5'               # ToDo
+              appName: 'myApplication-AppService-DuyPQ5'
               appType: webApp
               package: $(Build.ArtifactStagingDirectory)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
           #--------------------------------------------#    
