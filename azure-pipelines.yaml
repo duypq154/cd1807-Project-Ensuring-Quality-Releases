@@ -210,6 +210,7 @@ stages:
                 sudo apt-get install python3-pip -y
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
+                sudo apt install openjdk-11-jdk -y
                 pip3 install selenium
                 cd ~/
                 DIR=/home/myagent/app
@@ -224,7 +225,7 @@ stages:
                     LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
                     wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
                     unzip -o chromedriver_linux64.zip
-                    sudo ln -s $PWD/chromedriver /usr/local/bin/chromedriver
+                    sudo ln -s $PWD/chromedriver/usr/local/bin/chromedriver
                 fi
                 export PATH=$PATH:/home/myagent/app
                 echo "Starting Selenium Tests"
