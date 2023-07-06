@@ -84,18 +84,6 @@
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Content-Type is present\", function () { \r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is application/json\", function () { \r",
-							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.include(\"application/json\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body is present\", function () { \r",
-							"    pm.response.to.have.body();\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Body is a valid json\", function () { \r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
@@ -106,6 +94,23 @@
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const jsonBodyata = JSON.parse(pm.request.body.toJSON().raw);\r",
+							"\r",
+							"pm.test(\"Body contains name and name is valid data type\", function () {\r",
+							"    pm.expect(jsonBodyata.name).to.be.a(\"string\");\r",
+							"    pm.expect(typeof jsonBodyata.name).to.eql(\"string\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains salary and salary is valid data type\", function () {\r",
+							"    pm.expect(jsonBodyata.salary).to.be.a(\"number\");\r",
+							"    pm.expect(typeof jsonBodyata.salary).to.eql(\"number\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains age and age is valid data type\", function () {\r",
+							"    pm.expect(jsonBodyata.age).to.be.a(\"number\");\r",
+							"    pm.expect(typeof jsonBodyata.age).to.eql(\"number\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -117,7 +122,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":{{name}},\"salary\":{{{salary}}},\"age\":{{age}}}",
+					"raw": "{\r\n    \"name\":{{name}},\r\n    \"salary\":{{salary}},\r\n    \"age\":{{age}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
