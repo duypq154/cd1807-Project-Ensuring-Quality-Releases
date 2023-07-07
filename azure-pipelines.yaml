@@ -118,8 +118,8 @@ stages:
     - task: ArchiveFiles@2
       displayName: 'Archive FakeRestAPI'
       inputs:
-        rootFolderOrFile: #'$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
-        includeRootFolder: false
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/automatedtesting/jmeter/fakerestapi'
+        includeRootFolder: true
         archiveType: 'zip'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip'
     - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId)-fakerestapi.zip
@@ -141,7 +141,8 @@ stages:
       displayName: 'Upload Package'
       artifact: drop-perftests
 
-    #- task: PublishBuildArtifacts@1
+    # Publish your Actifact
+    - task: PublishBuildArtifacts@1
 
     # Destroy the resources in Azure
     #- task: TerraformTaskV3@3
