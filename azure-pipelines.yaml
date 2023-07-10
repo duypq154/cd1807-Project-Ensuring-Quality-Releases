@@ -158,8 +158,8 @@ stages:
               script: |
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
-                unzip -o $(Build.BuildId)-perftests.zip                     
-                jmeter -n -t Endurance_Test_Suite.jmx -l jmeterEndurance.log -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                
+                unzip -o $(Build.BuildId)-perftests.zip
+                ./apache-jmeter-5.6/bin/jmeter -n -t Endurance_Test_Suite.jmx -l jmeterEndurance.log -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                
               workingDirectory: $(Pipeline.Workspace)/drop-perftests         
 
           - task: CmdLine@2
@@ -169,7 +169,7 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                jmeter -n -t Stress_Test_Suite.jmx -l jmeterStressTest.log -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                                          
+                ./apache-jmeter-5.6/bin/jmeter -n -t Stress_Test_Suite.jmx -l jmeterStressTest.log -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                                          
               workingDirectory: $(Pipeline.Workspace)/drop-perftests         
               
   #--------------------------------------------#  
