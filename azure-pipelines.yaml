@@ -197,7 +197,8 @@ stages:
                 sudo apt-get install unzip -y
                 sudo apt-get install -y chromium-browser
                 sudo apt install openjdk-11-jdk -y
-                pip3 install selenium
+                pip3 install selenium -y
+                pip3 install --upgrade requests
                 cd ~/
                 DIR=/home/myagent/app
                 if [ ! -d "$DIR" ]; then
