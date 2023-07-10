@@ -71,7 +71,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Activity",
+			"name": "Get Activity by ID",
 			"event": [
 				{
 					"listen": "test",
@@ -95,12 +95,15 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"ID\": {{ID}},\r\n  \"Title\": {{Title}},\r\n  \"DueDate\": {{DueDate}},\r\n  \"Completed\": {{Completed}}\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,7 +111,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?",
+					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID={{ID}}",
 					"protocol": "https",
 					"host": [
 						"myapplication-appservice-duypq5",
@@ -121,8 +124,8 @@
 					],
 					"query": [
 						{
-							"key": "",
-							"value": null
+							"key": "ID",
+							"value": "{{ID}}"
 						}
 					]
 				}
