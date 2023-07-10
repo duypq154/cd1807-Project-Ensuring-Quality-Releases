@@ -1,5 +1,4 @@
 # #!/usr/bin/env python
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
@@ -15,6 +14,8 @@ def functional_ui_test(user, password):
     
     # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
 
     # options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
