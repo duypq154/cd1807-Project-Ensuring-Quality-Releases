@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Get All Employees",
+			"name": "Get All Activity",
 			"event": [
 				{
 					"listen": "test",
@@ -29,10 +29,6 @@
 							"\r",
 							"pm.test(\"Body is a valid json\", function () { \r",
 							"    pm.response.to.be.json;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"status: success\", function () {\r",
-							"    pm.expect(jsonData.status).to.eql('success');\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
@@ -59,24 +55,23 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/employees",
-					"protocol": "http",
+					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities",
+					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"myapplication-appservice-duypq5",
+						"azurewebsites",
+						"net"
 					],
 					"path": [
 						"api",
-						"v1",
-						"employees"
+						"Activities"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Create Employee",
+			"name": "Create Activity",
 			"event": [
 				{
 					"listen": "test",
@@ -88,29 +83,24 @@
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"status: success\", function () {\r",
-							"    pm.expect(jsonData.status).to.eql('success');\r",
+							"pm.test(\"Completed: true\", function () {\r",
+							"    pm.expect(jsonData.Completed).to.eql(true);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"const jsonBodyata = JSON.parse(pm.request.body.toJSON().raw);\r",
+							"const jsonBodydata = JSON.parse(pm.request.body.toJSON().raw);\r",
 							"\r",
-							"pm.test(\"Body contains name and name is valid data type\", function () {\r",
-							"    pm.expect(jsonBodyata.name).to.be.a(\"string\");\r",
-							"    pm.expect(typeof jsonBodyata.name).to.eql(\"string\");\r",
+							"pm.test(\"Body contains ID and ID is valid data type\", function () {\r",
+							"    pm.expect(parseInt(jsonBodydata.ID)).to.be.a('number');\r",
+							"    pm.expect(typeof jsonBodydata.ID).to.eql(\"number\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body contains salary and salary is valid data type\", function () {\r",
-							"    pm.expect(jsonBodyata.salary).to.be.a(\"number\");\r",
-							"    pm.expect(typeof jsonBodyata.salary).to.eql(\"number\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body contains age and age is valid data type\", function () {\r",
-							"    pm.expect(jsonBodyata.age).to.be.a(\"number\");\r",
-							"    pm.expect(typeof jsonBodyata.age).to.eql(\"number\");\r",
+							"pm.test(\"Body contains Completed and Completed is valid data type\", function () {\r",
+							"    pm.expect(jsonBodydata.Completed).to.be.a('boolean');\r",
+							"    pm.expect(typeof jsonBodydata.Completed).to.eql(\"boolean\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -122,7 +112,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":{{name}},\r\n    \"salary\":{{salary}},\r\n    \"age\":{{age}}\r\n}",
+					"raw": "{\r\n  \"ID\": {{ID}},\r\n  \"Title\": {{Title}},\r\n  \"DueDate\": {{DueDate}},\r\n  \"Completed\": {{Completed}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -130,17 +120,22 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"myapplication-appservice-duypq5",
+						"azurewebsites",
+						"net"
 					],
 					"path": [
 						"api",
-						"v1",
-						"create"
+						"Activities"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
 					]
 				}
 			},

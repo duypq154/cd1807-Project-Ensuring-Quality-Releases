@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Get All Employees",
+			"name": "Get All Activity",
 			"event": [
 				{
 					"listen": "test",
@@ -29,10 +29,6 @@
 							"\r",
 							"pm.test(\"Body is a valid json\", function () { \r",
 							"    pm.response.to.be.json;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"status: success\", function () {\r",
-							"    pm.expect(jsonData.status).to.eql('success');\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
@@ -59,24 +55,23 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/employees",
-					"protocol": "http",
+					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities",
+					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"myapplication-appservice-duypq5",
+						"azurewebsites",
+						"net"
 					],
 					"path": [
 						"api",
-						"v1",
-						"employees"
+						"Activities"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Create Employee",
+			"name": "Create Activity",
 			"event": [
 				{
 					"listen": "test",
@@ -84,24 +79,12 @@
 						"exec": [
 							"var jsonData = pm.response.json();\r",
 							"\r",
-							"pm.test(\"Content-Type is present\", function () { \r",
-							"    pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Content-Type is application/json\", function () { \r",
-							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.include(\"application/json\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body is present\", function () { \r",
-							"    pm.response.to.have.body();\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Body is a valid json\", function () { \r",
 							"    pm.response.to.be.json;\r",
 							"});\r",
 							"\r",
-							"pm.test(\"status: success\", function () {\r",
-							"    pm.expect(jsonData.status).to.eql('success');\r",
+							"pm.test(\"Completed: true\", function () {\r",
+							"    pm.expect(jsonData.Completed).to.eql(true);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
@@ -117,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":{{name}},\"salary\":{{{salary}}},\"age\":{{age}}}",
+					"raw": "{\r\n  \"ID\": {{ID}},\r\n  \"Title\": {{Title}},\r\n  \"DueDate\": {{DueDate}},\r\n  \"Completed\": {{Completed}}\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -125,17 +108,22 @@
 					}
 				},
 				"url": {
-					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"raw": "https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?",
 					"protocol": "https",
 					"host": [
-						"dummy",
-						"restapiexample",
-						"com"
+						"myapplication-appservice-duypq5",
+						"azurewebsites",
+						"net"
 					],
 					"path": [
 						"api",
-						"v1",
-						"create"
+						"Activities"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
 					]
 				}
 			},

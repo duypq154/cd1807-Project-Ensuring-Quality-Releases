@@ -3,25 +3,31 @@
 	"name": "myEnvironment",
 	"values": [
 		{
-			"key": "name",
-			"value": "\"Duy Pham\"",
+			"key": "ID",
+			"value": "99",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "salary",
-			"value": "10000",
+			"key": "Title",
+			"value": "\"my Title\"",
 			"type": "default",
 			"enabled": true
 		},
 		{
-			"key": "age",
-			"value": "30",
+			"key": "DueDate",
+			"value": "\"2023-07-10T04:35:56.347Z\"",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "Completed",
+			"value": "true",
 			"type": "default",
 			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2023-07-06T11:23:40.182Z",
-	"_postman_exported_using": "Postman/10.15.5"
+	"_postman_exported_at": "2023-07-10T04:52:57.634Z",
+	"_postman_exported_using": "Postman/10.15.8"
 }
