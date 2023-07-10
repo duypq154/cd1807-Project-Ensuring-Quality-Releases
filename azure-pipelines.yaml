@@ -208,8 +208,8 @@ stages:
                 unzip -o $(Pipeline.Workspace)/drop-uitests/$(Build.BuildId)-uitests.zip
                 FILE=/home/myagent/app/chromedriver_linux64.zip
                 LATEST=$(wget -q -O - http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
-                wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64.zip
-                unzip -o chromedriver_linux64.zip
+                wget http://chromedriver.storage.googleapis.com/$LATEST/chromedriver_linux64_99.zip
+                unzip -o chromedriver_linux64_99.zip
                 sudo ln -s $PWD/chromedriver/usr/local/bin/chromedriver
                 export PATH=$PATH:/home/myagent/app
                 echo "Starting Selenium Tests"
