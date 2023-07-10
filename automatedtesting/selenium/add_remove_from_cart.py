@@ -14,8 +14,9 @@ def functional_ui_test(user, password):
     
     # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
-    options.addArguments("--no-sandbox");
-    options.addArguments("--disable-dev-shm-usage");
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
 
     # options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
