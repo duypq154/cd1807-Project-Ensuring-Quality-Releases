@@ -1,3 +1,7 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
 1688973193285,1129,HTTP Request,200,OK,Stress Test Suite 2-1,text,true,,352,170,1,5,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=1,1129,0,858
 1688973195785,1150,HTTP Request,200,OK,Stress Test Suite 2-2,text,true,,351,170,1,1,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=2,1150,0,863
+1688975579765,1205,HTTP Request,200,OK,Stress Test Suite 2-1,text,true,,352,170,1,7,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=1,1205,0,914
+1688975582265,1073,HTTP Request,200,OK,Stress Test Suite 2-2,text,true,,351,170,1,1,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=2,1073,0,806
+1688975598085,1062,HTTP Request,200,OK,Stress Test Suite 2-1,text,true,,351,170,1,8,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=1,1062,0,797
+1688975600583,1104,HTTP Request,200,OK,Stress Test Suite 2-2,text,true,,351,170,1,1,https://myapplication-appservice-duypq5.azurewebsites.net/api/Activities?ID=2,1104,0,826
