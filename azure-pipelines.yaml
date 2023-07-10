@@ -223,7 +223,7 @@ stages:
                 echo "Completed Selenium Tests. Check selenium.log for results."
 - stage: Build
   jobs:
-  - job: BuildInfrastructure
+  - job: PostmanTesting
     steps:
     # Postman Data Validation Test Suite    
     # ToDo: Verify the working directory
