@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.common.by import By
 import logging
+import datetime
 
  
 # Start the browser and login with standard_user
@@ -12,13 +13,12 @@ def functional_ui_test(user, password):
     logging.basicConfig(filename="./seleniumlog.txt", format="%(asctime)s %(message)s", filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
     logging.info('Starting the browser...')
     
-    # --uncomment when running in Azure DevOps.
     options = ChromeOptions()
-    #options.add_argument('--headless')
-    #options.add_argument('--no-sandbox')
-    #options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--no-sandbox')
+    options.add_argument("--headless") 
+    options.add_argument("--remote-debugging-port=9222")
 
-    options.add_argument("--headless")
+    #options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
 
     # Test Login to the site
@@ -47,9 +47,9 @@ def functional_ui_test(user, password):
 
     product_items = driver.find_elements(By.XPATH,path_inventory_item)
 
-    assert len(product_items) == 5
+    assert len(product_items) == 6
 
-    logging.info("Successfully found 5 product items.")    
+    logging.info("Successfully found 6 product items.")    
 
     for item in product_items:
 
@@ -67,9 +67,9 @@ def functional_ui_test(user, password):
 
     shopping_cart_total_items = driver.find_element(By.XPATH,path_shopping_cart_badge).text
 
-    assert '5' == shopping_cart_total_items
+    assert '6' == shopping_cart_total_items
 
-    logging.info("Succesfully added to shopping cart: 5 items in total")
+    logging.info("Succesfully added to shopping cart: 6 items in total")
 
  
     # Test Remove Items from Shopping Cart
@@ -86,7 +86,6 @@ def functional_ui_test(user, password):
 
     logging.info("Successfully entered the shopping cart page.")
 
- 
     path_cart_item_remove_buttons = "//*[@id='cart_contents_container']//div[@class='cart_list']//div[@class='cart_item']"
 
     remove_item_buttons = driver.find_elements(By.XPATH,path_cart_item_remove_buttons)
@@ -105,5 +104,8 @@ def functional_ui_test(user, password):
     assert 0 == len(shopping_cart_total_items)
 
     logging.info("Succesfully removed all items from shopping cart.")
+
+
+    print('UI tests are all completed')
 
 functional_ui_test('standard_user', 'secret_sauce')
