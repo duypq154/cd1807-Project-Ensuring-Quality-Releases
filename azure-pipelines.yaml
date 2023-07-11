@@ -168,7 +168,7 @@ stages:
             displayName: 'Publish Endurance Test Results'
             inputs:
               htmlType: 'Jmeter'
-              JmeterReportsPath: '$(Build.SourcesDirectory)/endurance-test-result'
+              JmeterReportsPath: '$(Pipeline.Workspace)/drop-perftests/endurance-test-result'
 
             
           - task: CmdLine@2
@@ -187,7 +187,17 @@ stages:
             displayName: 'Publish Stress Test Results'
             inputs:
               htmlType: 'Jmeter'
-              JmeterReportsPath: '$(Build.SourcesDirectory)/stress-test-result'
+              JmeterReportsPath: '$(Pipeline.Workspace)/drop-perftests/stress-test-result'
+
+          # Print Postman Test Logs
+          - task: Bash@3
+            displayName: 'Print Postman Test Logs'
+            inputs:
+              targetType: 'inline'
+              script: |
+                ls -lah endurance-test-result/
+                ls -lah stress-test-result/
+                cat jmeter.log
               
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
