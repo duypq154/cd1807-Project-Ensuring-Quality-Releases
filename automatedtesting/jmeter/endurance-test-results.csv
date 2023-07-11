@@ -49,3 +49,5 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1688975598978,570,GET All Activities,200,OK,Endurance Test Suite 1-10,text,true,,3109,191,2,2,http://myapplication-appservice-duypq5.azurewebsites.net/api/Activities,570,0,278
 1688975599399,270,GET All Activities,200,OK,Endurance Test Suite 1-9,text,true,,3079,191,2,2,http://myapplication-appservice-duypq5.azurewebsites.net/api/Activities,270,0,0
 1688975599549,289,GET All Activities,200,OK,Endurance Test Suite 1-10,text,true,,3109,191,1,1,http://myapplication-appservice-duypq5.azurewebsites.net/api/Activities,289,0,0
+1689066487483,836,GET All Activities,200,OK,Endurance Test Suite 1-1,text,true,,3109,191,2,3,http://myapplication-appservice-duypq5.azurewebsites.net/api/Activities,835,0,541
+1689066487873,502,GET All Activities,200,OK,Endurance Test Suite 1-2,text,true,,3109,191,1,2,http://myapplication-appservice-duypq5.azurewebsites.net/api/Activities,502,0,249
