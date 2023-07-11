@@ -6,8 +6,7 @@ import logging
 import datetime
 
  
-# Start the browser and login with standard_user
-
+# Start browser and login using standard_user
 def functional_ui_test(user, password):
 
     logging.basicConfig(filename="./seleniumlog.txt", format="%(asctime)s %(message)s", filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
@@ -21,7 +20,7 @@ def functional_ui_test(user, password):
     #options.add_argument("--headless")
     driver = webdriver.Chrome(options=options)
 
-    # Test Login to the site
+    # Login to website
     logging.info('Browser started. Access to the demo page.')
 
     driver.get('https://www.saucedemo.com/')
@@ -40,7 +39,7 @@ def functional_ui_test(user, password):
     logging.info("Successfully logged in as user: " + user)
 
 
-    # Test Add Items to Shopping Cart
+    # Add Items to Shopping Cart
     logging.info("Starting the shopping...")
 
     path_inventory_item = "//*[@id='inventory_container']/*[@class='inventory_list']/div[@class='inventory_item']"
@@ -72,8 +71,7 @@ def functional_ui_test(user, password):
     logging.info("Succesfully added to shopping cart: 6 items in total")
 
  
-    # Test Remove Items from Shopping Cart
-
+    # Remove Items from Shopping Cart
     logging.info("A spouse came in, need to destroy the the evidence... ;-)")
 
     driver.find_element(By.XPATH,path_shopping_cart_link).click()
@@ -106,6 +104,6 @@ def functional_ui_test(user, password):
     logging.info("Succesfully removed all items from shopping cart.")
 
 
-    print('UI tests are all completed')
+    logging.info('UI tests are all completed')
 
 functional_ui_test('standard_user', 'secret_sauce')
