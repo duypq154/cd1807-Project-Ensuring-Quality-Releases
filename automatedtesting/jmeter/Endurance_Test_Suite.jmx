@@ -199,7 +199,7 @@
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">C:\Users\quang\OneDrive\Documents\Udacity_Project\cd1807-Project-Ensuring-Quality-Releases\automatedtesting\jmeter\test-suite\stress-test-results.csv</stringProp>
+          <stringProp name="filename">C:\Users\quang\OneDrive\Documents\Udacity_Project\cd1807-Project-Ensuring-Quality-Releases\automatedtesting\jmeter\stress-test-results.csv</stringProp>
         </ResultCollector>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config">
