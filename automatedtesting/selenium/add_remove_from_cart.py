@@ -52,13 +52,19 @@ def functional_ui_test(user, password):
 
     for item in product_items:
 
-        product_item_name = item.find_element(By.XPATH,"//div[@class='inventory_item_name']")
+        element = "a[id='item_" + str(item) + "_title_link']"  # Get the product URL
+        driver.find_element(By.CSS_SELECTOR, element).click()  # Click the found URL
+        driver.find_element(By.CSS_SELECTOR, "button.btn_primary.btn_inventory").click()  # Add product to the cart
+        product = driver.find_element(By.CSS_SELECTOR, "div.inventory_details_name").text  # Get the product name
+
+        #product_item_name = item.find_element(By.XPATH,"//div[@class='inventory_item_name']")
 
         item.find_element(By.XPATH,"//button[contains(text(),'Add to cart')]").click()
 
-        print("Succesfully added to shopping cart: " + product_item_name.text)
+        #print("Succesfully added to shopping cart: " + product_item_name.text)
 
-        logging.info("Succesfully added to shopping cart: " + product_item_name.text)
+        #logging.info("Succesfully added to shopping cart: " + product_item_name.text)
+        logging.info("Succesfully added to shopping cart: " + product)
 
     path_shopping_cart_link = "//*[@id='shopping_cart_container']"
 
