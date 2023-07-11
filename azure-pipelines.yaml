@@ -24,7 +24,7 @@ stages:
   jobs:
   - job: BuildInfrastructure
     steps:
-    # Install Terraform on the pipeline agent 
+    # Install Terraform on the pipeline agent go
     - task: TerraformInstaller@0
       displayName: 'Terrafom installation'
       inputs:
