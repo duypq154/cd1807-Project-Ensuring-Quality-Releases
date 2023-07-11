@@ -159,6 +159,7 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
+                Remove-Item -Path $(Pipeline.Workspace)/drop-perftests/test-result/* -Force -Recurse
                 ./apache-jmeter-5.6/bin/jmeter -n -t Endurance_Test_Suite.jmx -l $(Pipeline.Workspace)/drop-perftests/test-result/EnduranceTest_Result.jtl -e -o $(Pipeline.Workspace)/drop-perftests/test-result
               workingDirectory: $(Pipeline.Workspace)/drop-perftests         
 
@@ -169,6 +170,7 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
+                Remove-Item -Path $(Pipeline.Workspace)/drop-perftests/test-result/* -Force -Recurse
                 ./apache-jmeter-5.6/bin/jmeter -n -t Stress_Test_Suite.jmx -l $(Pipeline.Workspace)/drop-perftests/test-result/StressTest_Result.jtl -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                              
               workingDirectory: $(Pipeline.Workspace)/drop-perftests         
               
