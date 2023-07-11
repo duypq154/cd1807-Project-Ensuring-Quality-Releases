@@ -191,13 +191,13 @@ stages:
 
           # Print Postman Test Logs
           - task: Bash@3
-            displayName: 'Print Postman Test Logs'
+            displayName: 'Print Jmeter Test Logs'
             inputs:
               targetType: 'inline'
               script: |
-                ls -lah endurance-test-result/
-                ls -lah stress-test-result/
-                cat jmeter.log
+                ls -lah $(Pipeline.Workspace)/drop-perftests/endurance-test-result/
+                ls -lah $(Pipeline.Workspace)/drop-perftests/stress-test-result/
+                cat $(Pipeline.Workspace)/drop-perftests/jmeter.log
               
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
