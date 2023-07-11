@@ -9,7 +9,7 @@ import datetime
 # Start browser and login using standard_user
 def functional_ui_test(user, password):
 
-    logging.basicConfig(filename="./seleniumlog.txt", format="%(asctime)s %(message)s", filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
+    logging.basicConfig(filename="./selenium.log", format="%(asctime)s %(message)s", filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
     logging.info('Starting the browser...')
     
     options = ChromeOptions()
