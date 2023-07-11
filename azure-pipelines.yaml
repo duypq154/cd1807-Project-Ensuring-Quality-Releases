@@ -159,11 +159,18 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                rm -rf $(Pipeline.Workspace)/drop-perftests/test-result/*
-                ./apache-jmeter-5.6/bin/jmeter -n -t Endurance_Test_Suite.jmx -l $(Pipeline.Workspace)/drop-perftests/test-result/EnduranceTest_Result.jtl -e -o $(Pipeline.Workspace)/drop-perftests/test-result
-                cat $(Pipeline.Workspace)/drop-perftests/test-result/EnduranceTest_Result.jtl
-              workingDirectory: $(Pipeline.Workspace)/drop-perftests         
+                rm -rf endurance-test-result/*
+                ./apache-jmeter-5.6/bin/jmeter -n -t Endurance_Test_Suite.jmx -l endurance-test-result/EnduranceTest_Result.jtl -e -o endurance-test-result
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests        
 
+            # Publish Endurance Test Suite
+          - task: publishhtmlreport@1
+            displayName: 'Publish Endurance Test Results'
+            inputs:
+              htmlType: 'Jmeter'
+              JmeterReportsPath: '$(Build.SourcesDirectory)/endurance-test-result'
+
+            
           - task: CmdLine@2
             displayName: 'Run Stress Test'
             inputs:
@@ -171,10 +178,16 @@ stages:
                 wget "https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.tgz"
                 tar -xf apache-jmeter-5.6.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                rm -rf $(Pipeline.Workspace)/drop-perftests/test-result/*
-                ./apache-jmeter-5.6/bin/jmeter -n -t Stress_Test_Suite.jmx -l $(Pipeline.Workspace)/drop-perftests/test-result/StressTest_Result.jtl -e -o $(Pipeline.Workspace)/drop-perftests/test-result                                                              
-                cat $(Pipeline.Workspace)/drop-perftests/test-result/StressTest_Result.jtl
-              workingDirectory: $(Pipeline.Workspace)/drop-perftests         
+                rm -rf stress-test-result/*
+                ./apache-jmeter-5.6/bin/jmeter -n -t Stress_Test_Suite.jmx -l stress-test-result/StressTest_Result.jtl -e -o stress-test-result                                                           
+              workingDirectory: $(Pipeline.Workspace)/drop-perftests      
+
+            # Publish Stress Test Suite
+          - task: publishhtmlreport@1
+            displayName: 'Publish Stress Test Results'
+            inputs:
+              htmlType: 'Jmeter'
+              JmeterReportsPath: '$(Build.SourcesDirectory)/stress-test-result'
               
   #--------------------------------------------#  
   # Selenium | Functional UI Tests
