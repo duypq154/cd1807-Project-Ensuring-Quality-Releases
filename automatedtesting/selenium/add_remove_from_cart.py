@@ -7,7 +7,7 @@ import logging
 # Start the browser and login with standard_user
 def login(user, password):
     logging.basicConfig(filename="./selenium.log", format="%(asctime)s %(message)s", filemode="w", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S")
-    logging.info('Starting the browser...')
+    logging.info('myVM Starting the browser...')
 
     options = ChromeOptions()
 
@@ -16,7 +16,7 @@ def login(user, password):
     options.add_argument("--remote-debugging-port=9222")
 
     driver = webdriver.Chrome(options=options)
-    logging.info('Logging in...')
+    logging.info('myVM Logging in...')
     driver.get('https://www.saucedemo.com/')
 
     # login
@@ -26,7 +26,7 @@ def login(user, password):
     product_label = driver.find_element(By.CSS_SELECTOR, "span.title").text
 
     assert "Products" in product_label
-    logging.info('Login successfully with username: {:s} and password: {:s}'.format(user, password))
+    logging.info('myVM Login successfully with username: {:s} and password: {:s}'.format(user, password))
 
     return driver
 
@@ -41,10 +41,10 @@ def add_cart(driver, numOfItem):
         # Get product's name
         product = driver.find_element(By.CSS_SELECTOR, "div.inventory_details_name").text
         # Logging
-        logging.info(product + " was added to shopping cart.")
+        logging.info("myVM " +product + " was added to shopping cart.")
         # Back to main site
         driver.find_element(By.CSS_SELECTOR, "button.inventory_details_back_button").click()
-    logging.info('{:d} items were added to shopping cart.'.format(numOfItem))
+    logging.info('myVM {:d} items were added to shopping cart.'.format(numOfItem))
 
 def remove_cart(driver, numOfItem):
     for i in range(numOfItem):
@@ -52,9 +52,9 @@ def remove_cart(driver, numOfItem):
         driver.find_element(By.CSS_SELECTOR, element).click()
         driver.find_element(By.CSS_SELECTOR, "button.btn_secondary.btn_inventory").click()
         product = driver.find_element(By.CSS_SELECTOR, "div.inventory_details_name").text
-        logging.info(product + "Removed from shopping cart item name:" +product)
+        logging.info("myVM " +product + "Removed from shopping cart item name:" +product)
         driver.find_element(By.CSS_SELECTOR, "button.inventory_details_back_button").click()
-        logging.info('{:d} items are all removed from shopping cart.'.format(numOfItem))
+        logging.info('myVM {:d} items are all removed from shopping cart.'.format(numOfItem))
 
 if __name__ == "__main__":
     numberOfItem = 6
@@ -63,4 +63,4 @@ if __name__ == "__main__":
     driver = login(TEST_USER, TEST_PASS)
     add_cart(driver, numberOfItem)
     remove_cart(driver, numberOfItem)
-    logging.info('Selenium UI tests are completed')
+    logging.info('myVM Selenium UI tests are completed')
