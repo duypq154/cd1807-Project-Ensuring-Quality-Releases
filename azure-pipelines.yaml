@@ -243,6 +243,7 @@ stages:
                 export PATH=$PATH:/home/myagent/app
                 echo "Starting Selenium Tests"
                 python3 add_remove_from_cart.py >> selenium.log
+                sudo cp selenium.log /var/log/
                 echo "Completed Selenium Tests. Check selenium.log for results."
 - stage: PostmanTest
   jobs:
